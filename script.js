@@ -6,7 +6,7 @@ const grantAccessContainer = document.querySelector(".grant-location-container")
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
-
+const citynotfound=document.querySelector(".not-fount-city");
 //initially vairables need????
 
 let oldTab = userTab;
@@ -160,11 +160,20 @@ async function fetchSearchWeatherInfo(city) {
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
           );
         const data = await response.json();
+        if(data.cod==404){
+            loadingScreen.classList.remove("active");
+            userInfoContainer.classList.remove("active");
+            citynotfound.classList.add("active");
+        }
+       else{
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
         renderWeatherInfo(data);
+       }
+        
     }
     catch(err) {
-        //hW
+        console.log("i'm inside catch block");
+
     }
 }

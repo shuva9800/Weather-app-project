@@ -238,3 +238,23 @@ h1 {
     border-radius: 100%;
     margin-bottom:1px;
 }
+/* not found the city */
+
+.not-fount-city{
+    height: 382px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.not-fount-city img{
+    height: 100%;
+    width: 300px;
+    object-fit: cover; 
+    margin: 0 auto;
+    
+}
+.not-fount-city.active{
+    opacity: 1;
+}
